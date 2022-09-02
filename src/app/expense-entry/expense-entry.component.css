@@ -1,0 +1,16 @@
+#x1 {
+    background-color: aquamarine;
+    border: 2px solid black;
+}
+
+.red {
+    color: red;
+}
+
+.blue {
+    color: rgb(5, 5, 40);
+}
+
+.pink {
+    color: rgb(110, 224, 10);
+}

@@ -1,0 +1,69 @@
+<div class="form-check container my-5">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [(ngModel)]="checkboxvalue">
+    <label class="form-check-label" for="flexCheckDefault">
+        Please agree terms and conditions to install
+    </label>
+
+    <!-- <button type="button" class="btn  mx-5" *ngIf="checkboxvalue">Install</button> -->
+    <button type="button" class="btn  mx-5" [disabled]="!checkboxvalue">Install</button>
+
+    <hr>
+    <input type="text" [(ngModel)]="textboxvalue">
+
+    <!-- <div *ngIf="textboxvalue">
+        <h3 *ngIf="textboxvalue%2==0">Even Number</h3>
+        <h3 *ngIf="textboxvalue%2!==0">Odd number</h3>
+    </div> -->
+
+    <div *ngIf="textboxvalue">
+        <span *ngIf="textboxvalue%2==0 then eventemp ;else oddtemp"></span>
+        <ng-template #eventemp>
+            <h3>Even Number</h3>
+        </ng-template>
+        <ng-template #oddtemp>
+            <h3>Odd Number</h3>
+        </ng-template>
+
+    </div>
+
+    <hr>
+    <table class="table">
+        <tr *ngFor="let temp of programingLangs;let i=index ;let e=even" [class]="e?'bg-success':'bg-warning'">
+            <td>{{i+1}}</td>
+            <td>{{temp}}</td>
+            <td>{{e}}</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <!-- ng-switch case example -->
+    <!-- <input type="text" [(ngModel)]="weekday">
+    <div class="container" [ngSwitch]="weekday" style="font-size:x-large;">
+        <ng-template ngSwitchCase="0">I am sunday</ng-template>
+        <ng-template ngSwitchCase="1">I am Monday</ng-template>
+        <ng-template ngSwitchCase="2">I am Tuesday</ng-template>
+        <ng-template ngSwitchCase="3">I am wednesday</ng-template>
+        <ng-template ngSwitchCase="4">I am thrusday</ng-template>
+        <ng-template ngSwitchCase="5">I am Friday</ng-template>
+        <ng-template ngSwitchCase="6">I am saturday</ng-template>
+        <ng-template ngSwitchDefault>Please enter below 6 </ng-template>
+    </div> -->
+
+    <input type="text" [(ngModel)]="weekday" (keyup)="0" #t>
+    <div class="container" [ngSwitch]="t.value" style="font-size:x-large;" [ngStyle]="{backgroundColor:getColor()}">
+        <ng-template ngSwitchCase="0">I am sunday</ng-template>
+        <ng-template ngSwitchCase="1">I am Monday</ng-template>
+        <ng-template ngSwitchCase="2">I am Tuesday</ng-template>
+        <ng-template ngSwitchCase="3">I am wednesday</ng-template>
+        <ng-template ngSwitchCase="4">I am thrusday</ng-template>
+        <ng-template ngSwitchCase="5">I am Friday</ng-template>
+        <ng-template ngSwitchCase="6">I am saturday</ng-template>
+        <ng-template ngSwitchDefault>Please enter below 6 </ng-template>
+    </div>
+
+
+
+
+
+</div>
